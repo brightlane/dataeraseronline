@@ -7,7 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// Target High-Intent Search Matrix matching 2026 Platform Realities
+// Verified Target High-Intent Search Matrix for 2026 Platform Realities
 const MATRIX_PAGES = [
     {
         filename: "manychat-pricing-guide.html",
@@ -89,7 +89,8 @@ const MATRIX_PAGES = [
     }
 ];
 
-const REDIRECT_ROUTE = "./go.html"; // Utilizing the clean internal mask file
+// Clean internal masking route to mask raw affiliate scripts from scraper/extension hijackers
+const REDIRECT_ROUTE = "./go.html"; 
 
 function buildTemplate(page) {
     return `<!DOCTYPE html>
@@ -111,7 +112,7 @@ function buildTemplate(page) {
         p { color: #9ca3af; margin-bottom: 1.25rem; font-size: 1.05rem; }
         strong { color: #fff; }
         
-        /* 2026 Pricing Table Styling */
+        /* Data-Matrix Table Styling */
         .pricing-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.95rem; text-align: left; }
         .pricing-table th { background: #1f2937; color: #fff; padding: 12px; border: 1px solid var(--border); font-weight: 600; }
         .pricing-table td { padding: 12px; border: 1px solid var(--border); color: #9ca3af; }
