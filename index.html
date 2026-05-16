@@ -73,8 +73,10 @@
         /* Lead Magnet */
         .lead-magnet { background: var(--green); color: white; text-align: center; padding: 3rem 0; border-radius: var(--radius); }
         .lead-form { max-width: 400px; margin: 2rem auto; display: flex; gap: 1rem; }
-        .lead-form input { flex: 1; padding: 1rem; border-radius: 50px 0 0 50px; border: none; }
-        .lead-form button { background: white; color: var(--green); padding: 1rem 2rem; border-radius: 0 50px 50px 0; border: none; font-weight: 600; cursor: pointer; }
+        .lead-form input { flex: 1; padding: 1rem 1.5rem; border-radius: 50px 0 0 50px; border: none; outline: none; font-size: 1rem; color: var(--gray-900); }
+        .lead-form button { background: white; color: var(--green); padding: 1rem 2rem; border-radius: 0 50px 50px 0; border: none; font-weight: 600; cursor: pointer; font-size: 1rem; transition: background 0.2s, transform 0.1s; }
+        .lead-form button:hover { background: var(--gray-50); }
+        .lead-form button:active { transform: scale(0.98); }
 
         /* Sticky CTA */
         .sticky-cta { position: fixed; bottom: 20px; right: 20px; background: var(--green); color: white; padding: 1rem 1.5rem; border-radius: 50px; box-shadow: var(--shadow); z-index: 1000; display: none; text-decoration: none; font-weight: 600; }
@@ -83,13 +85,14 @@
         /* Footer */
         footer { background: var(--gray-900); color: white; padding: 3rem 0 1rem; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
-        .disclosure { background: #FEF3C7; padding: 1rem; border-radius: 8px; margin: 1rem 0; font-size: 0.9rem; border-left: 4px solid #F59E0B; }
+        .disclosure { background: #FEF3C7; padding: 1rem; border-radius: 8px; margin: 1rem 0; font-size: 0.9rem; border-left: 4px solid #F59E0B; color: var(--gray-900); }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2rem; }
             .nav-menu { display: none; }
-            .lead-form { flex-direction: column; }
-            .lead-form input, .lead-form button { border-radius: 50px; width: 100%; }
+            .lead-form { flex-direction: column; gap: 0.5rem; }
+            .lead-form input { border-radius: 50px; width: 100%; }
+            .lead-form button { border-radius: 50px; width: 100%; padding: 1rem; }
         }
     </style>
 
@@ -160,7 +163,6 @@
             <div class="benefit"><h3>💰 Pro = $15/mo</h3><p>Free plan available. Unlimited contacts on Premium.</p></div>
         </div>
 
-        <!-- Experience-Based Insight -->
         <div style="margin-top:2rem; text-align:center; font-size:1rem; max-width:800px; margin-left:auto; margin-right:auto;">
             <p>✅ Personally tested ManyChat: AI flows recovered $2,500 in abandoned carts in one month. Free plan is great, but Pro unlocks unlimited automation for serious marketers.</p>
         </div>
@@ -210,8 +212,8 @@
     <section class="lead-magnet section">
         <h2>🎁 FREE: 10 ManyChat Flows</h2>
         <p>Copy/paste flows that made $100K+ for users</p>
-        <form class="lead-form">
-            <input type="email" placeholder="Your email" required>
+        <form class="lead-form" id="affiliate-bridge-form">
+            <input type="email" placeholder="Your email address" required>
             <button type="submit">Get Flows FREE</button>
         </form>
     </section>
@@ -250,7 +252,17 @@
 </footer>
 
 <script>
-function toggle(el){const next=el.nextElementSibling;next.style.display=next.style.display==='block'?'none':'block';}
+// Toggle Accordion Functionality for FAQs
+function toggle(el){
+    const next = el.nextElementSibling;
+    next.style.display = next.style.display === 'block' ? 'none' : 'block';
+}
+
+// Client-Side Affiliate Form Interceptor
+document.getElementById('affiliate-bridge-form').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    window.location.href = "https://manychat.partnerlinks.io/nwkkk7vkps17";
+});
 </script>
 
 </body>
