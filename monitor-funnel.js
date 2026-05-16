@@ -7,9 +7,9 @@
 const http = require('http');
 const https = require('https');
 
-// Configuration Matrix
+// Configuration Matrix — UPDATED TO MATCH YOUR REPOSITORY NAME
 const CONFIG = {
-    landingPageUrl: "https://brightlane.github.io/ManyChat/",
+    landingPageUrl: "https://brightlane.github.io/ChatBotProReviews/",
     expectedAffiliateTarget: "manychat.partnerlinks.io",
     timeoutMs: 5000
 };
@@ -69,12 +69,10 @@ async function runDiagnostic() {
     console.log(`[STEP 2/3] Validating Live Partner Affiliate Link...`);
     const liveAffiliateUrl = `https://${CONFIG.expectedAffiliateTarget}/nwkkk7vkps17`;
     try {
-        // Send request accepting redirects to see where it lands
         const affiliateRes = await request(liveAffiliateUrl, {
             headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Revenue-Monitor/1.0' }
         });
 
-        // ManyChat partner links usually issue a 301/302 redirect or load a 200 landing page
         if (affiliateRes.statusCode >= 200 && affiliateRes.statusCode < 400) {
             console.log(`  ✅ Live: Affiliate tracking link is responsive (HTTP ${affiliateRes.statusCode}).`);
         } else {
@@ -91,7 +89,6 @@ async function runDiagnostic() {
     // STEP 3: Structural Validation Core
     console.log(`[STEP 3/3] Inspecting Source Markup Safety...`);
     try {
-        // Fetch raw HTML markup to inspect structural integrity
         const fetchHtml = () => new Promise((resolve, reject) => {
             https.get(CONFIG.landingPageUrl, (res) => {
                 let data = '';
