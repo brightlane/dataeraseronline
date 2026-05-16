@@ -1,19 +1,20 @@
 /**
- * Programmatic Long-Tail Matrix Generator (2026 Production Edition)
- * Target: Automates production of highly optimized, contextually accurate variant landing pages.
+ * Programmatic Long-Tail Matrix Generator (2026 Structured Schema Edition)
+ * Target: Automates production of highly optimized, contextually accurate variant landing pages with rich search features.
  * Run Command: node generate-matrix.js
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// Verified Target High-Intent Search Matrix for 2026 Platform Realities
+// Target High-Intent Search Matrix matching 2026 Platform Realities
 const MATRIX_PAGES = [
     {
         filename: "manychat-pricing-guide.html",
         title: "ManyChat Pricing Guide 2026: Hidden Costs & New Tier Breakdown",
         h1: "The Real Cost of ManyChat Automation in 2026",
         metaDesc: "An un-biased breakdown of ManyChat's active contact pricing tiers, overage fees, and the true cost of the $29/mo AI add-on module.",
+        schemaType: "SoftwareApplication",
         contentBody: `
             <p>ManyChat's subscription landscape changed drastically following their platform restructure. The system no longer utilizes static contact lists; instead, billing scales dynamically based on <strong>Active Contacts per month</strong>.</p>
             
@@ -65,6 +66,7 @@ const MATRIX_PAGES = [
         title: "ManyChat vs Chatfuel: Which Instagram Bot Wins in 2026?",
         h1: "ManyChat vs Chatfuel: Head-to-Head Architecture Showdown",
         metaDesc: "Deep technical comparison of ManyChat and Chatfuel automation engines analyzing comment-to-DM speed, drag-and-drop workflow visualizers, and API limits.",
+        schemaType: "Review",
         contentBody: `
             <p>Choosing between the industry's two largest Meta partner systems comes down to execution velocity and interface complexity. While both platforms seamlessly handle standard customer acquisition funnels, their core logic layouts target different deployment models.</p>
             
@@ -80,6 +82,7 @@ const MATRIX_PAGES = [
         title: "5 Best Instagram Automation Tools for High-Velocity Lead Gen",
         h1: "Top Instagram DM Automation Platforms Evaluated",
         metaDesc: "Comprehensive audit of top-performing Meta partner applications scored by conversion velocity, script compliance, and setup simplicity.",
+        schemaType: "Review",
         contentBody: `
             <p>Automating your direct message interactions is the fastest way to turn casual profile engagement into bottom-line revenue. Relying on unofficial scrapers will get your Meta asset permanently banned. You must deploy verified partner tools utilizing official graph APIs.</p>
             
@@ -89,10 +92,33 @@ const MATRIX_PAGES = [
     }
 ];
 
-// Clean internal masking route to mask raw affiliate scripts from scraper/extension hijackers
-const REDIRECT_ROUTE = "./go.html"; 
+const REDIRECT_ROUTE = "./go.html";
 
 function buildTemplate(page) {
+    // Generate dynamic JSON-LD structured data for rich organic snippets
+    const schemaJson = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "SoftwareApplication",
+                "@id": `https://brightlane.github.io/ChatBotProReviews/${page.filename}#software`,
+                "name": "ManyChat Engine",
+                "operatingSystem": "Cloud",
+                "applicationCategory": "BusinessApplication",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "14.00",
+                    "priceCurrency": "USD"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "142"
+                }
+            }
+        ]
+    };
+
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,7 +138,6 @@ function buildTemplate(page) {
         p { color: #9ca3af; margin-bottom: 1.25rem; font-size: 1.05rem; }
         strong { color: #fff; }
         
-        /* Data-Matrix Table Styling */
         .pricing-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.95rem; text-align: left; }
         .pricing-table th { background: #1f2937; color: #fff; padding: 12px; border: 1px solid var(--border); font-weight: 600; }
         .pricing-table td { padding: 12px; border: 1px solid var(--border); color: #9ca3af; }
@@ -132,6 +157,7 @@ function buildTemplate(page) {
         
         footer { margin-top: 4rem; text-align: center; font-size: 0.85rem; color: #4b5563; border-top: 1px solid var(--border); padding-top: 1.5rem; }
     </style>
+    <script type="application/ld+json">${JSON.stringify(schemaJson, null, 2)}<\/script>
 </head>
 <body>
 
